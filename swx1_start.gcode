@@ -1,4 +1,3 @@
-M300 S60 P10 ; chirp
 M117 Initializing
 ; Set coordinate modes
 G90 ; use absolute coordinates
@@ -12,24 +11,20 @@ M104 S160 ; set no-ooze nozzle temp while bed heats
 M140 S[first_layer_bed_temperature] ; set heatbed temperature
 M109 S160 ; wait until nozzle is warm to avoid bed damage
 ; Home
-M300 S60 P10 ; chirp
 G1 Z3 F3000 ; move z up little to prevent scratching of surface
 M117 Homing
 G28 ; home all axes
 ; Present bed for final cleaning
-M300 S60 P10 ; chirp
 G1 Z3 F3000 ; move z up little to prevent scratching of surface
 G0 X155 Y310 F7200 ; Present bed for cleaning
 ; Wait for final bed heating
 M190 S[first_layer_bed_temperature] ; wait for the bed to heat up
 ; Return to prime position and wait for nozzle to heat up
-M300 S60 P10 ; chirp
 G1 Z3 F3000 ; move z up little to prevent scratching of surface
 G1 X0 Y-2 F7200.0 ; go outside print area
 M104 S[first_layer_temperature] ; set final nozzle print temp 
 M109 S[first_layer_temperature] ; wait for the nozzle to heat up
 ; Prime line routine
-M300 S60 P10 ; chirp
 M117 Printing prime line
 M900 K0; Disable Linear Advance for prime line
 G92 E0.0 ; reset extrusion distance
@@ -45,12 +40,7 @@ G1 X110.0 E0 F3600.0 ; +10mm intro line @ 0.00
 G1 E0.8 F1500; de-retract
 G92 E0.0 ; reset extrusion distance
 ; Final print adjustments
-M300 S60 P10 ; chirp
 M117 Preparing to print
 M92 E440.55 ; set e-steps
 M420 S1 ; reload fade mesh bed leveling
-; turn off all LEDs
-M42 P4 S0
-M42 P5 S0
-M42 P6 S0
 M117 Print in progress
